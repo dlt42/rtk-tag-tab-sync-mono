@@ -1,5 +1,4 @@
-import { FastifyLoggerInstance, FastifyReply, FastifyRequest, RequestGenericInterface } from 'fastify';
-import { IncomingMessage, Server } from 'http';
+import { FastifyReply, FastifyRequest } from 'fastify';
 
 enum Visibility {
   PUBLIC = 'public',
@@ -26,21 +25,9 @@ type DeleteMessageQuery = {
 
 type UUID = string;
 
-type NewMessagesRequest = FastifyRequest<
-  { Querystring: MessageQuery },
-  Server,
-  IncomingMessage,
-  RequestGenericInterface,
-  FastifyLoggerInstance
->;
+type NewMessagesRequest = FastifyRequest<{ Querystring: MessageQuery }>;
 
-type DeleteMessagesRequest = FastifyRequest<
-  { Querystring: DeleteMessageQuery },
-  Server,
-  IncomingMessage,
-  RequestGenericInterface,
-  FastifyLoggerInstance
->;
+type DeleteMessagesRequest = FastifyRequest<{ Querystring: DeleteMessageQuery }>;
 
 export type Message = {
   id: UUID;

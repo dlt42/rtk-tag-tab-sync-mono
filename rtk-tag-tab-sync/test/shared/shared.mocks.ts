@@ -6,7 +6,7 @@ const listeners: ListenerMock[] = [];
 export const mockBroadcastChannel = () => {
   vi.stubGlobal(
     'BroadcastChannel',
-    vi.fn((name: string) => {
+    vi.fn(function (name: string) {
       const channel = {
         name,
         postMessage: vi.fn(),
