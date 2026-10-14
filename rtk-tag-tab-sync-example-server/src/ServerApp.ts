@@ -1,5 +1,5 @@
 import fastify, { FastifyInstance } from 'fastify';
-import fastifyCors from 'fastify-cors';
+import fastifyCors from '@fastify/cors';
 import { Server } from 'https';
 import { client, postgrator } from './Database';
 import { deleteMessageHandler, getMessagesHandler, postMessagesHandler } from './API/handlers';
@@ -26,7 +26,7 @@ export class ServerApp {
     await client.connect();
     console.log(`Connected to db`);
 
-    const url = await this.fastify.listen(this.port);
+    const url = await this.fastify.listen({ port: this.port });
     console.log(`App listening on: ${url}`);
   }
 
